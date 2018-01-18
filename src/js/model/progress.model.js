@@ -6,6 +6,7 @@
 
 (function(app){
 	
+	var apiUrl = 'http://pb-api.herokuapp.com/bars';
 
 	//Just keep as simple as possible for now..
 	//make it as private function..
@@ -24,19 +25,22 @@
 	};
 
 	var ProgressBarModel = function() {
-		this.data = {};
+		this.data = null;
 		this.registers = {};
 	};
 
 	ProgressBarModel.prototype.load = function() {
-		//some problem with http://pb-api.herokuapp.com/bars - may CORS issue - needs to look
-		ajax('mock/data.json', 'GET', true).then(function(resp) {
+		//ajax('mock/data.json', 'GET', true).then(function(resp) {
+		ajax(apiUrl, 'GET', true).then(function(resp) {
 			this.data = JSON.parse(resp);
 			this.fireEvent('loaded');
 		}.bind(this));
 	};
 
 	ProgressBarModel.prototype.on = function(event, cb, scope) {
+		if(arguments.length < 2) {
+			throw new Error('Minimum two arguments required');
+		}
 		if(!this.registers.hasOwnProperty(event)) {
 			this.registers[event] = [];
 		}
@@ -64,6 +68,14 @@
 				}
 			}
 		}
+	};
+
+	ProgressBarModel.prototype.setApiUrl = function(url) {
+		apiUrl = url;
+	};
+
+	ProgressBarModel.prototype.getData = function() {
+		return this.data;
 	};
 
 	app.ProgressBarModel = ProgressBarModel;

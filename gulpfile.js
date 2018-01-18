@@ -15,8 +15,8 @@ var jslint = require('gulp-jslint');
 gulp.task('less', function() {
   gulp.src('src/less/*.less')
     .pipe(less())
-    .pipe(gulp.dest('src/css'))
-    .pipe(livereload());
+    .pipe(gulp.dest('src/css'));
+    //.pipe(livereload());
 });
 
 gulp.task('jslint', function() {

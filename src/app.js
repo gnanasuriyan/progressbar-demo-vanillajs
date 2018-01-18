@@ -7,9 +7,10 @@
 	
 	var app = window.app = {};
 
+	//Simplified version of $.ready in jQuery
 	var domReady = function(cb) {
 		if(document.readyState !== 'loading') {
-			cb();
+			cb(); //the dom is alreay loaded...
 		} else if(document.addEventListener) {
 			document.addEventListener('DOMContentLoaded', cb);
 		} else  {
