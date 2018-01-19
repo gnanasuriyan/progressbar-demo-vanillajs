@@ -11,10 +11,10 @@ We need to have node.js for setting up this project.
 2. Invoke "npm install" from project directory
 
 ## Development server
-For running development server just invoke "gulp serve" from project directory. Now you can see our app is running in "http://localhost:3000/"
+For running development server just invoke "gulp serve" from project directory. Now you can see our app is running in http://localhost:3000/
 
 ## Running jasmine test cases.
-After starting development server, goto the browser and open the url "http://localhost:3000/test.html"
+After starting development server, goto the browser and open the url http://localhost:3000/test.html
 
 ## Production build
 In gulp.js file we can see list of gulp tasks. For taking production build invoke "gulp build" from project directory.
