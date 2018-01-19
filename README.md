@@ -17,7 +17,7 @@ For running development server just invoke "gulp serve" from project directory. 
 After starting development server, goto the browser and open the url http://localhost:3000/test.html
 
 ## Production build
-In gulp.js file we can see list of gulp tasks. For taking production build invoke "gulp build" from project directory.
+For taking production build invoke "gulp build" from project directory.
 
 ## Preview production build
 Make sure you have stopped development server and then invoke "gulp serve-prod".
