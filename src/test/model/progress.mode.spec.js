@@ -1,8 +1,3 @@
-//should fire event when we get new data
-//should allow any person to register loaded event
-//minimum two arguments required for resgistering event - should throw expection otherwise
-//fireEvent should fire - specified event and 
-
 
 describe('Progress Model', function () {
 

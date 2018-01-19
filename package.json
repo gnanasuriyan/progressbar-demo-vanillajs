@@ -5,18 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp watch"
+    "start": "gulp serve"
   },
   "author": "Gnanasuriyan",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
     "gulp-less": "^3.4.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-sequence": "^1.0.0",
     "gulp-serve": "^1.4.0",
     "gulp-watch": "^5.0.0",
-    "jasmine": "^2.9.0"
-  },
-  "dependencies": {
-    "gulp-jslint": "^1.0.10"
+    "jasmine": "^2.9.0",
+    "run-sequence": "^2.2.1",
+    "gulp-jslint": "^1.0.10",
+    "jshint-stylish": "^2.2.1"
   }
 }

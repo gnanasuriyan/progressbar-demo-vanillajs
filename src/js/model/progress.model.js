@@ -4,7 +4,9 @@
 * The corresponding model is set via controller.
 */
 
-(function(app){
+var app = window.app || {};
+
+app.ProgressBarModel = (function(){
 	
 	var apiUrl = 'http://pb-api.herokuapp.com/bars';
 
@@ -30,7 +32,7 @@
 	};
 
 	ProgressBarModel.prototype.load = function() {
-		//ajax('mock/data.json', 'GET', true).then(function(resp) {
+		// ajax('mock/data.json', 'GET', true).then(function(resp) {
 		ajax(apiUrl, 'GET', true).then(function(resp) {
 			this.data = JSON.parse(resp);
 			this.fireEvent('loaded');
@@ -78,6 +80,6 @@
 		return this.data;
 	};
 
-	app.ProgressBarModel = ProgressBarModel;
+	return ProgressBarModel;
 
-})(window.app);
+}())

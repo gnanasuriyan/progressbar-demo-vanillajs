@@ -4,7 +4,9 @@
 * The corresponding model is set via controller.
 */
 
-(function(app){
+var app = window.app || {};
+
+app.ProgressBarView = (function(){
 	var _data = null;
 
 	//lets cache frequently manipulated DOM
@@ -60,14 +62,15 @@
 		return html;
 	};
 
-	var updateProgressBar = function() {
-		var index = parseInt(this.getAttribute('data-index'));
+	var updateProgressBar = function(buttonEl, parentEl) {
+		var index = parseInt(buttonEl.getAttribute('data-index'));
 		if(!cache.selectedBar) {
-			cache.selectedBar = document.getElementById('selected-bar');
+			//cache.selectedBar = document.getElementById('selected-bar');
+			cache.selectedBar = parentEl.getElementsByTagName('select')[0];
 		}
 		var selectedBar = parseInt(cache.selectedBar.value);
 		if(!cache.bars) {
-			cache.bars = document.getElementsByClassName('progress-bar');
+			cache.bars = parentEl.getElementsByClassName('progress-bar');
 		}
 		var barIndex = parseInt(cache.selectedBar.value);
 
@@ -84,9 +87,11 @@
 
 	var attachEvents = function(parentEl) {
 		//lets add events..
-		var buttons = document.getElementsByClassName('bar-button');
+		var buttons = parentEl.getElementsByClassName('bar-button');
 		for(var i=0, length=buttons.length; i<length; i++) {
-			on(buttons[i], 'click', updateProgressBar);
+			on(buttons[i], 'click', function(){
+				updateProgressBar(this, parentEl);
+			});
 		}
 	};
 
@@ -108,6 +113,6 @@
 	};
 
 
-	app.ProgressBarView = ProgressBarView;
+	return ProgressBarView;
 	
-})(window.app);
+}());
